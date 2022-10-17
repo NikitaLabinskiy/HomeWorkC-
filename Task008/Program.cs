@@ -8,10 +8,8 @@ int allEvenNumbers = 2;  //Начал с 2 чтобы сократить про�
 
 while (allEvenNumbers <= RundommNumber)
 {
-    if (allEvenNumbers % 2 == 0)
-    {
-        Console.Write(allEvenNumbers);
-        Console.Write(", ");
-    }
+    Console.Write(allEvenNumbers);
+    Console.Write(", ");
+    
     allEvenNumbers+=2;
 }
