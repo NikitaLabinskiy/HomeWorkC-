@@ -11,6 +11,14 @@ void TableOfCubes(int number)
     for(int i = 1; i <= number; i++)
     {
         array[i] = (i * i) * i;
+    }
+    PrintArray(array);
+}
+
+void PrintArray(int[] array)
+{
+    for(int i = 1; i < array.Length; i++)
+    {
         Console.Write($"{array[i]} ");
     }
 }
