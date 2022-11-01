@@ -5,10 +5,8 @@ Console.Clear();
 
 Console.Write("Введите число: ");
 int input1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите число повторно: ");
-int input2 = Convert.ToInt32(Console.ReadLine());
 
-CompareArrays(input1, input2);
+Polindrom(input1);
 
 int GetLengthNumber(int number)
 {
@@ -21,38 +19,44 @@ int GetLengthNumber(int number)
     return count;
 }
 
-
-void CompareArrays(int number1, int number2)
+int[] ConvertToArray(int number)
 {
-    int length1 = GetLengthNumber(number1);
-    int length2 = GetLengthNumber(number2);
-    int[] array1 = new int[length1];
-    int[] array2 = new int[length2];
-    int count = length1;
+    int length = GetLengthNumber(number);
+    int[] array = new int[length];
+    for(int i = 0; i < length; i++)
+    {
+        array[i] = number % 10;
+        number /= 10;
+    }
+    for (int i = 0; i < length; i++)
+    {
+        Console.Write(array[i]);
+        Console.Write(" ");
+    }
+    return array;
+}
 
-    for(int i = 0; i < length1; i++)
+int[] ReverceArray(int number)
+{
+    int length = GetLengthNumber(number);
+    int[] array = new int[length];
+    for(int i = length - 1; i >= 0; i--)
     {
-        array1[i] = number1 % 10;
-        number1 /= 10;
+        array[i] = number % 10;
+        number /= 10;
     }
-    for (int i = 0; i < length1; i++)
+    for (int i = 0; i < length; i++)
     {
-        Console.Write(array1[i]);
+        Console.Write(array[i]);
         Console.Write(" ");
     }
-    Console.WriteLine(" ");
-    for(int i = length2 - 1; i >= 0; i--)
-    {
-        array2[i] = number2 % 10;
-        number2 /= 10;
-    }
-    for (int i = 0; i < length2; i++)
-    {
-        Console.Write(array2[i]);
-        Console.Write(" ");
-    }
+    return array;
+}
+
+void CompareArrays(int[] array1, int[] array2)
+{
     int y = 0;
-    for(int i = 0; i < count; i++)
+    for(int i = 0; i < array1.Length; i++)
     {
         if(array1[i] == array2[i])
         {
@@ -71,4 +75,15 @@ void CompareArrays(int number1, int number2)
         Console.WriteLine("");
         Console.WriteLine("Число является полиндромом");
     }
+}
+
+void Polindrom(int number1)
+{
+    // int length1 = GetLengthNumber(number1);
+    int number2 = number1;
+    int[] array1 = ConvertToArray(number1);
+    Console.WriteLine("");
+    int[] array2 = ReverceArray(number2);
+    // int count = length1;
+    CompareArrays(array1, array2);
 }
